@@ -18,16 +18,16 @@ class HomeController extends GetxController{
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> widgetOptions = <Widget> [
-    HomePageView(),
-    Text(
+    const HomePageView(),
+    const Text(
       'Index 1: Siswa',
       style: optionStyle,
     ),
-    Text(
+    const Text(
       'Index 2: Tabungan',
       style: optionStyle,
     ),
-    Text(
+    const Text(
       'Index 3: Settings',
       style: optionStyle,
     ),

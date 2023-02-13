@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:al_azhar_app/server/api_server.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 class Helpers{
 
 }
@@ -135,8 +135,12 @@ Future requestOTPResetPassword(email)async{
 Future cekKoneksi(Function action)async{
   try {
     final result = await InternetAddress.lookup('example.com');
+    print('result------------------');
+    print(result);
     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
       action();
+      print('--------------------INTERNET ------------------');
+      print('OK');
     }
   } on SocketException catch (_) {
     Get.defaultDialog(

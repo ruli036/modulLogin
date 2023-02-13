@@ -91,6 +91,7 @@ class VerifikasiOtpController extends GetxController{
     //   );
     // }
   }
+
   validasi(){
     if(otp.value.length == 5){
       if(resetPassword == true){

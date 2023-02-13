@@ -105,7 +105,7 @@ class VerifikasiOTPPageView extends StatelessWidget {
                                                 otpC.requestOptAgain();
                                               }
                                             },
-                                            child: Text('Kirim Kode ${otpC.time.value}', style: TextStyle( fontSize:12,color: Colors.white,fontFamily: objectApp.fontApp),)
+                                            child: Text('Kirim Kode ${otpC.time.value}', style: TextStyle( fontSize:10,color: Colors.white,fontFamily: objectApp.fontApp),)
                                         ),
                                       ),
                                     ),

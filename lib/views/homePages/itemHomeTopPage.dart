@@ -15,7 +15,7 @@ class ItemHomePageTop extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          const FaIcon(FontAwesomeIcons.solidCircleUser,size: 80,color: Colors.white,),
+          const FaIcon(FontAwesomeIcons.solidCircleUser,size: 60,color: Colors.white,),
           Expanded(
             child:  Padding(
               padding:const EdgeInsets.all(8.0),
@@ -35,9 +35,10 @@ class ItemHomePageTop extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: 50,
+              height: 60,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('${homePageC.month}', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
                   Text('${homePageC.year}', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),

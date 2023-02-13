@@ -23,46 +23,72 @@ class Home extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 10,
-          color: AppColors.buttonColor,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: FaIcon(FontAwesomeIcons.house,color: Colors.white,),
-              tooltip: "Home",
-              onPressed: () {
-                homeC.onItemTapped(0);
-              },
+      bottomNavigationBar: Obx(()=>
+         BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 10,
+            color: AppColors.buttonColor,
+          child: Container(
+            height: 50,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // ElevatedButton.icon(
+                //   icon: FaIcon(FontAwesomeIcons.house,color: Colors.white,),
+                //   onPressed: () {
+                //     homeC.onItemTapped(0);
+                //   },
+                //   label: Text("Home"),
+                // ),
+                // InkWell(
+                //   onTap: () {
+                //     homeC.onItemTapped(0);
+                //   },
+                //   child: Column(
+                //     children: [
+                //       Padding(
+                //         padding: EdgeInsets.only(top: 5),
+                //         child: FaIcon(FontAwesomeIcons.house,color: Colors.white,),
+                //       ),
+                //       homeC.selectedIndex != 0? Container() :Text("Home",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.white),maxLines: 1,overflow: TextOverflow.ellipsis,),
+                //     ],
+                //   ),
+                // ),
+                IconButton(
+                  icon: FaIcon(FontAwesomeIcons.house,color: homeC.selectedIndex == 0?Colors.white:Colors.grey.shade300,size: homeC.selectedIndex == 0?25:null,),
+                  tooltip: "Home",
+                  onPressed: () {
+                    homeC.onItemTapped(0);
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 50),
+                  child: IconButton(
+                    icon: FaIcon(FontAwesomeIcons.users,color: homeC.selectedIndex == 1?Colors.white:Colors.grey.shade300,size: homeC.selectedIndex == 1?25:null,),
+                    tooltip: "Users",
+                    onPressed: () {
+                      homeC.onItemTapped(1);
+                    },
+                  ),
+                ), IconButton(
+                  icon: FaIcon(FontAwesomeIcons.wallet,color: homeC.selectedIndex == 2?Colors.white:Colors.grey.shade300,size: homeC.selectedIndex == 2?25:null,),
+                  tooltip: "Tabungan",
+                  onPressed: () {
+                    homeC.onItemTapped(2);
+                  },
+                ), IconButton(
+                  icon: FaIcon(FontAwesomeIcons.gear,color: homeC.selectedIndex == 3?Colors.white:Colors.grey.shade300,size: homeC.selectedIndex == 3?25:null,),
+                  tooltip: "Setting",
+                  onPressed: () {
+                    // homeC.onItemTapped(3);
+                    homeC.LogOut();
+                  },
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 50),
-              child: IconButton(
-                icon: FaIcon(FontAwesomeIcons.users,color: Colors.white,),
-                tooltip: "Users",
-                onPressed: () {
-                  homeC.onItemTapped(1);
-                },
-              ),
-            ), IconButton(
-              icon: FaIcon(FontAwesomeIcons.wallet,color: Colors.white,),
-              tooltip: "Tabungan",
-              onPressed: () {
-                homeC.onItemTapped(2);
-              },
-            ), IconButton(
-              icon: FaIcon(FontAwesomeIcons.gear,color: Colors.white,),
-              tooltip: "Setting",
-              onPressed: () {
-                // homeC.onItemTapped(3);
-                homeC.LogOut();
-              },
-            ),
-          ],
-        )
+          )
+        ),
       ),
 
     );

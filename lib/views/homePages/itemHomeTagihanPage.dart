@@ -45,7 +45,7 @@ class ItemHomePageTagihan extends StatelessWidget {
                   ),
                   child:const Padding(
                     padding:  EdgeInsets.all(8.0),
-                    child: Center(child: Text('Rp. 1.500.000', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 2,)),
+                      child: Center(child: Text('Rp. 1.500.000', style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 1,overflow: TextOverflow.ellipsis,)),
                   ),
                 ),
               )
@@ -80,7 +80,7 @@ class ItemHomePageTagihan extends StatelessWidget {
                   ),
                   child:const Padding(
                     padding:  EdgeInsets.all(8.0),
-                    child: Center(child: Text('Rp. 1.500.000', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 2,)),
+                    child: Center(child: Text('Rp. 110.500.000', style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 1,overflow: TextOverflow.ellipsis,)),
                   ),
                 ),
               )
@@ -115,7 +115,7 @@ class ItemHomePageTagihan extends StatelessWidget {
                   ),
                   child:const Padding(
                     padding:  EdgeInsets.all(8.0),
-                    child: Center(child: Text('Rp. 1.500.000', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 2,)),
+                    child: Center(child: Text('Rp. 1.500.000', style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 1,overflow: TextOverflow.ellipsis,)),
                   ),
                 ),
               )
