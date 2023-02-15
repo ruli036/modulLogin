@@ -10,51 +10,30 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeC = Get.find<HomeController>();
-    return Scaffold(
-      body: Obx(()=>
-          Center(child: homeC.widgetOptions.elementAt(homeC.selectedIndex.value))
-      ),
-      floatingActionButton: Transform.scale(
-        scale: 1.2,
-        child: FloatingActionButton(
-          child:const FaIcon(FontAwesomeIcons.wallet,size: 30,),
-          onPressed: (){},
+    return WillPopScope(
+      onWillPop: ()=>homeC.onWillPop(context),
+      child: Scaffold(
+        body: Obx(()=>
+            Center(child: homeC.widgetOptions.elementAt(homeC.selectedIndex.value))
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      bottomNavigationBar: Obx(()=>
-         BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 10,
-            color: AppColors.buttonColor,
-          child: Container(
-            height: 50,
+        floatingActionButton: Transform.scale(
+          scale: 1.2,
+          child: FloatingActionButton(
+            child:const FaIcon(FontAwesomeIcons.wallet,size: 30,),
+            onPressed: (){},
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+        bottomNavigationBar: Obx(()=>
+           BottomAppBar(
+            shape: CircularNotchedRectangle(),
+            notchMargin: 10,
+              color: AppColors.buttonColor,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                // ElevatedButton.icon(
-                //   icon: FaIcon(FontAwesomeIcons.house,color: Colors.white,),
-                //   onPressed: () {
-                //     homeC.onItemTapped(0);
-                //   },
-                //   label: Text("Home"),
-                // ),
-                // InkWell(
-                //   onTap: () {
-                //     homeC.onItemTapped(0);
-                //   },
-                //   child: Column(
-                //     children: [
-                //       Padding(
-                //         padding: EdgeInsets.only(top: 5),
-                //         child: FaIcon(FontAwesomeIcons.house,color: Colors.white,),
-                //       ),
-                //       homeC.selectedIndex != 0? Container() :Text("Home",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.white),maxLines: 1,overflow: TextOverflow.ellipsis,),
-                //     ],
-                //   ),
-                // ),
                 IconButton(
                   icon: FaIcon(FontAwesomeIcons.house,color: homeC.selectedIndex == 0?Colors.white:Colors.grey.shade300,size: homeC.selectedIndex == 0?25:null,),
                   tooltip: "Home",
@@ -86,11 +65,11 @@ class Home extends StatelessWidget {
                   },
                 ),
               ],
-            ),
-          )
+            )
+          ),
         ),
-      ),
 
+      ),
     );
   }
 }

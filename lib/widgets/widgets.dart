@@ -32,8 +32,13 @@ class OtpInput extends StatelessWidget {
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
+          }else{
+            FocusScope.of(context).previousFocus();
           }
           otpC.otp.value = '${otpC.fieldOne.text}${otpC.fieldTwo.text}${otpC.fieldThree.text}${otpC.fieldFour.text}${otpC.fieldFive.text}';
+          if(otpC.otp.value.length == 5){
+            otpC.validasi();
+          }
         },
       ),
     );
@@ -69,6 +74,27 @@ class LoadingView extends StatelessWidget {
     );
   }
 }
+class KonfirmasiLogOut extends StatelessWidget {
+  String text;
+  KonfirmasiLogOut({Key? key,required this.text }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          child: Image.asset(objectApp.logoApp),
+        ),
+        Text(
+            text,
+            style:const TextStyle(fontFamily: objectApp.fontApp ),
+            textAlign: TextAlign.center
+        ),
+      ],
+    );
+  }
+}
 class AlertErrorView extends StatelessWidget {
   String text;
   final MaterialColor colors;
@@ -90,6 +116,39 @@ class AlertErrorView extends StatelessWidget {
 
       ],
     );
+  }
+}
+class ListDataSiswa extends StatelessWidget {
+  String text;
+  ListDataSiswa({Key? key,required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List.generate(3, (index) =>  Padding(
+        padding: const EdgeInsets.only(bottom: 5),
+        child: Container(
+          decoration:const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black45,
+                    blurRadius: 1,
+                    spreadRadius: 0.1,
+                    offset: Offset(0,1)
+                )
+              ]
+          ),
+          child: ListTile(
+            title: Text("Anak ${index+1}", style: TextStyle(fontFamily: objectApp.fontApp ), textAlign: TextAlign.center),
+            onTap: (){
+              print(index);
+            },
+          ),
+        ),
+      ), ),
+     );
   }
 }
 
@@ -116,6 +175,37 @@ class AlertSuccesView extends StatelessWidget {
 
         ],
       ),
+    );
+  }
+}
+
+class GradientIcon extends StatelessWidget {
+  GradientIcon(
+      this.icon,
+      this.size,
+      this.gradient,
+      );
+
+  final IconData icon;
+  final double size;
+  final Gradient gradient;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      child: SizedBox(
+        width: size * 1.2,
+        height: size * 1.2,
+        child: FaIcon(
+          icon,
+          size: size,
+          color: Colors.white,
+        ),
+      ),
+      shaderCallback: (Rect bounds) {
+        final Rect rect = Rect.fromLTRB(0, 0, size, size);
+        return gradient.createShader(rect);
+      },
     );
   }
 }

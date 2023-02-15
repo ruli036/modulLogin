@@ -68,7 +68,7 @@ class RequestOtpPageView extends StatelessWidget {
                                     maxLength: 15,
                                     inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
-                                      labelText: '+62',
+                                      labelText: 'Nomor Hp',
                                       labelStyle: TextStyle(fontSize: objectApp.labelFont),
                                       prefixIcon:const Icon(Icons.account_circle,color: Colors.blue,),
                                       border:const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20),)

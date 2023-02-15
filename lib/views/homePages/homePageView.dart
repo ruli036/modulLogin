@@ -54,7 +54,7 @@ class BagroundHome extends StatelessWidget {
             right: 10,
             bottom: 80,
             child: Opacity(
-                opacity: 0.2,
+                opacity: 0.1,
                 child: Image.asset(objectApp.logoApp,scale: 1.4,))
         )
       ],

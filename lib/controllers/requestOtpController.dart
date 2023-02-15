@@ -13,11 +13,6 @@ class RequestOtpController extends GetxController{
   validasi(){
     final form = keyform.currentState;
     if (form!.validate()) {
-      Get.defaultDialog(
-            title: "LOADING",
-            barrierDismissible: false,
-            content: LoadingView(text: "Mengirim Kode OTP")
-          );
       cekKoneksi(()=>requestOTP(email.text));
     }
   }

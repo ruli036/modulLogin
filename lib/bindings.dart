@@ -29,6 +29,7 @@ class VerifikasiOtpBindigs extends Bindings{
   @override
   void dependencies() {
     Get.lazyPut(() => VerifikasiOtpController());
+    Get.lazyPut(() => LupaPasswordController());
   }
 }
 class VerifikasiOtpResetPassBindigs extends Bindings{

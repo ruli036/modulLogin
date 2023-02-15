@@ -1,6 +1,7 @@
 import 'package:al_azhar_app/controllers/homeController.dart';
 import 'package:al_azhar_app/service/helpers.dart';
 import 'package:al_azhar_app/service/objects.dart';
+import 'package:al_azhar_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,16 @@ class ItemMenuHomePage extends StatelessWidget {
                   GestureDetector(
                     onTap: (){
                       print("do something ${TitleMenu[index]}");
+                      print("do something ${index}");
+                      if(index == 5){
+
+                      }else{
+                        Get.defaultDialog(
+                          title: "List Siswa",
+                          content: ListDataSiswa(text: "Keluar Dari Akun Anda?"),
+                          confirmTextColor: AppColors.textColor,
+                        );
+                      }
                     },
                     child: Container(
                       width: size(context).width / 3 - 20,
@@ -30,7 +41,7 @@ class ItemMenuHomePage extends StatelessWidget {
                       decoration:const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(20)),
-                          boxShadow:[
+                          boxShadow: [
                             BoxShadow(
                                 color: Colors.black45,
                                 blurRadius: 4,
@@ -50,11 +61,10 @@ class ItemMenuHomePage extends StatelessWidget {
                           ),
                           Center(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              // crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Image.asset(IconMenu[index],height: 80),
-                                ),
+                                IconMenu[index],
                                 Text(
                                   TitleMenu[index],
                                   style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold,),

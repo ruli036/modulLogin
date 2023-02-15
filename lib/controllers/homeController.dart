@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:al_azhar_app/service/helpers.dart';
 import 'package:al_azhar_app/service/objects.dart';
 import 'package:al_azhar_app/views/homePages/homePageView.dart';
 import 'package:al_azhar_app/widgets/widgets.dart';
@@ -14,6 +15,7 @@ class HomeController extends GetxController{
   String date = DateFormat('dd').format(DateTime.now());
   String month = DateFormat('MMMM').format(DateTime.now());
   String year = DateFormat('yyyy').format(DateTime.now());
+  DateTime? currentBackPressTime;
 
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -39,18 +41,43 @@ class HomeController extends GetxController{
   Future LogOut()async{
     Get.defaultDialog(
         title: "Log Out",
-        barrierDismissible: false,
-        content: LoadingView(text: "Harap Tunggu...")
-    );
-    Timer(const Duration(
-        seconds: 3),
-            (){
-              GetStorage().erase();
-              Get.offAllNamed("/login");
-        }
+        barrierDismissible: true,
+        content: KonfirmasiLogOut(text: "Keluar Dari Akun Anda?"),
+      textConfirm: "Keluar",
+      textCancel: "Cancel",
+      confirmTextColor: AppColors.textColor,
+      // buttonColor:AppColors.cancelButtonColor ,
+      onConfirm: (){
+        GetStorage().erase();
+        Get.offAllNamed("/login");
+      }
     );
 
   }
+
+  Future<bool> onWillPop(context)async{
+    if(selectedIndex.value == 0){
+      DateTime now = DateTime.now();
+      if (currentBackPressTime == null ||
+          now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
+        currentBackPressTime = now;
+        const snackBar = SnackBar(
+          content: Text('Klik 2 Kali! Untuk Keluar!',style: TextStyle(color: Colors.black),),
+          backgroundColor: Colors.white,
+          duration: Duration(milliseconds: 1300),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return Future.value(false);
+      }
+      return Future.value(true);
+
+    }else{
+      selectedIndex.value = 0;
+      return Future.value(false);
+    }
+  }
+
+
   @override
   void onInit() {
     // TODO: implement onInit
